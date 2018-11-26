@@ -10,13 +10,13 @@ namespace rockpaperscissor
     {
         static void Main(string[] args)
         {
-            // What was chosen by Player
+            // What was chosen by Player and Computer
             string playerChoose, computerChoose;
 
             string welcomeMessage = "Rock-Paper-Scissors game";
             Console.WriteLine(welcomeMessage.ToUpper());
 
-            // Asking player for continuing the game
+            // Asking player if wants to play again
             bool playAgain = true;
 
             while (playAgain)
@@ -26,11 +26,11 @@ namespace rockpaperscissor
 
                 Console.WriteLine("\r\nHow many times do you want to play against the Computer? ");
                 Console.Write("Enter a number, please: ");
-                // Reading the input and converting it to int
+                // Reading the input and converting it from string to int
                 string playingRounds = Console.ReadLine();
                 int convertToInt = int.Parse(playingRounds);
 
-                // Repeat the game as many times as the player entered
+                // Repeat the game as many times as the Player entered(rounds)
                 for (int i = 0; i < convertToInt; i++)
                 {
                     Console.WriteLine("\r\nROUND {0}", i + 1);
@@ -38,18 +38,23 @@ namespace rockpaperscissor
                     // Players choice
                     playerChoose = Console.ReadLine();
 
-                    /* For Computer choose creating a random nr.
+                    /* 
+                     * For Computer choose creating a random nr.
                      * between 1-4(4 is exclusive => so 1,2,3)
                      */
+
                     Random rnd = new Random();
                     int randomInt;
                     // rnd.Next(inclusive nr., exclusive nr.)
                     randomInt = rnd.Next(1, 4);
 
-                    /* Checking which was "choosed" by computer
+                    /* 
+                     * Checking which was "choosed" by Computer
                      * and comparing to Players' choosed "weapon".
-                     * And by the results incrementing the scores
+                     * And by the results increment the scores of each
+                     * if it's necessary
                      */
+
                     switch (randomInt)
                     {
                         case 1:
@@ -232,10 +237,10 @@ namespace rockpaperscissor
                 {
                     playAgain = false;
 
-                    /* Quit the .exe file when the user 
-                    * pressed a key not after imediately
-                    * the full game has ended
-                    */
+                    /* 
+                     * Stop the .exe file when the user 
+                     * pressed any key after the game has ended
+                     */
                     Console.WriteLine("Press any key to Quit...");
                     Console.ReadKey();
                 }
